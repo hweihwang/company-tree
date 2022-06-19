@@ -4,10 +4,10 @@ use App\WebProviseProject\Transportation\Scripts\BuildCompanyTree;
 
 require __DIR__ . '/vendor/autoload.php';
 
-echo "Start script\n";
+const OUTPUT_FILE = 'company_tree.json';
 
-$start = microtime(true);
+const LOG_FILE = 'company_tree.log';
 
-(new BuildCompanyTree())->execute();
-
-echo 'Total time: ' . (microtime(true) - $start);
+Infras\Helper\Script::logScriptTime(function () {
+    (new BuildCompanyTree())->execute(OUTPUT_FILE);
+}, LOG_FILE);

@@ -8,6 +8,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin -
 RUN alias composer='php composer.phar' \
     && composer dump-autoload
 
-CMD ["php", "index.php"]
+CMD php index.php & tail -f /dev/null
 
 

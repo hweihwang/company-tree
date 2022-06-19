@@ -5,9 +5,12 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: php_web_provise
+    container_name: php_${APP_NAME}
     restart: unless-stopped
     tty: true
+    volumes:
+      - ./${RESULT_FILE}:/var/www/html/${RESULT_FILE}
+      - ./${LOG_FILE}:/var/www/html/${LOG_FILE}
     networks:
       - web_provise
 

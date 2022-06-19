@@ -12,9 +12,7 @@ use Infras\External\APIClient\CurlClient;
 
 class BuildCompanyTree
 {
-    const OUTPUT_FILE = 'company_tree.json';
-
-    public function execute(): void
+    public function execute(string $outputFile = 'company_tree.json'): void
     {
         $apiClient = new CurlClient();
 
@@ -30,6 +28,6 @@ class BuildCompanyTree
         $companyCollection = new CompanyTreeCollection($companyTransformer);
         $companyCollection->build($companies, $travels);
 
-        file_put_contents(self::OUTPUT_FILE, $companyCollection->serialize());
+        file_put_contents($outputFile, $companyCollection->serialize());
     }
 }
