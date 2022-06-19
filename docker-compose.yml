@@ -1,0 +1,16 @@
+version: "3"
+
+services:
+  php:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: php_web_provise
+    restart: unless-stopped
+    tty: true
+    networks:
+      - web_provise
+
+networks:
+  web_provise:
+    driver: bridge
